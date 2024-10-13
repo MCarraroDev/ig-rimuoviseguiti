@@ -5,7 +5,7 @@ Il codice al momento **NON funziona** con dispositivi con il **sitema operativo 
 
 Istruzioni:
 Vai nella home del profilo e segui questi passi:
-  * impostazioni
+  * impostazioni (3 linee orizzontali in alto a destra nella pagina profilo)
   * la tua attività
   * scorri fino in fondo e clicca "Scarica le tue informazioni"
   * "Scarica le tue informazioni"
