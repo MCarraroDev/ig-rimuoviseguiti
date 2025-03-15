@@ -44,6 +44,7 @@ Questo strumento web ti permette di identificare facilmente quali utenti Instagr
 * [![HTML5][HTML5-shield]][HTML5-url]
 * [![CSS3][CSS3-shield]][CSS3-url]
 * [![JavaScript][JS-shield]][JS-url]
+* [![jQuery][jQuery-shield]][jQuery-url]
 
 <!-- UTILIZZO -->
 ## Utilizzo
@@ -85,5 +86,7 @@ Distribuito sotto licenza MIT. Vedi `LICENSE` per maggiori informazioni.
 [CSS3-url]: https://www.w3.org/Style/CSS/
 [JS-shield]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
 [JS-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+[jQuery-shield]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[jQuery-url]: https://jquery.com
 
 <p align="right">(<a href="#readme-top">torna all'inizio</a>)</p>
