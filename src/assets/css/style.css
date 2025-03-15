@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-app-dark text-white;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-primary hover:bg-primary/90 rounded-lg cursor-pointer transition-colors duration-300;
+  }
+
+  .btn-success {
+    @apply bg-success hover:bg-success/90;
+  }
+}
