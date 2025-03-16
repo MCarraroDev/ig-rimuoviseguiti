@@ -2,74 +2,93 @@
 <html lang="it">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gestione Follower</title>
-    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#7C3AED',      // Viola vivace
+              'primary-hover': '#6D28D9', // Viola più scuro per hover
+              success: '#10B981',      // Verde smeraldo
+              'success-hover': '#059669', // Verde più scuro per hover
+              dark: '#1A1A1A',         // Sfondo più scuro
+              'dark-card': '#2D2D2D',  // Card più scure
+              accent: '#F59E0B'        // Arancione per accenti speciali
+            }
+          }
+        }
+      }
+    </script>
     <script src="lib/jquery-3.7.1.min.js"></script>
   </head>
-  <body>
-    <h1>Gestione Follower</h1>
-    <div class="container">
-      <div class="file-buttons">
-        <label
-          for="following-file"
-          class="file-label"
-          >Carica il file "following"</label
-        >
-        <input
-          type="file"
-          id="following-file"
-          accept=".html"
-        />
-
-        <label
-          for="followers-file"
-          class="file-label"
-          >Carica il file "followers_1"</label
-        >
-        <input
-          type="file"
-          id="followers-file"
-          accept=".html"
-        />
-      </div>
-      <div id="output"></div>
-      <div class="container">
-        <section id="utilizzo">
-          <h2>Utilizzo</h2>
-          <h3>Scaricare i Dati</h3>
-          <ol>
-            <li>Vai nella home del tuo profilo Instagram</li>
-            <li>Apri le impostazioni (3 linee orizzontali in alto a destra)</li>
-            <li>Seleziona "La tua attività"</li>
-            <li>Scorri fino in fondo e clicca "Scarica le tue informazioni"</li>
-            <li>Clicca "Scarica o trasferisci informazioni"</li>
-            <li>Seleziona l'account desiderato</li>
-            <li>Clicca "Alcune delle tue informazioni"</li>
-            <li>Nella voce "Contatti" seleziona "Follower e persone/Pagine seguite"</li>
-            <li>Clicca "Scarica sul dispositivo"</li>
-            <li>Attendi la mail con il file .zip (potrebbe richiedere diverse ore)</li>
-          </ol>
+  <body class="bg-dark text-white min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <h1 class="text-3xl font-bold text-center mb-8">Gestione Follower</h1>
       
-          <h3>Analizzare i Dati</h3>
-          <ol>
-            <li>Estrai il file .zip scaricato (ti servirà solo la cartella "connections")</li>
-            <li>Carica i file richiesti dalla cartella "connections" usando i pulsanti qui sopra</li>
-            <li>Visualizza la lista degli utenti che non ti seguono</li>
-            <li>Usa le checkbox per tenere traccia delle azioni intraprese</li>
-          </ol>
+      <div class="space-y-8">
+        <!-- File Upload Section -->
+        <div class="file-buttons flex flex-col sm:flex-row justify-center items-center gap-4 transition-opacity duration-1000">
+          <label for="following-file" class="file-label bg-primary hover:bg-primary-hover px-6 py-3 rounded-lg cursor-pointer transition-colors duration-300">
+            Carica il file "following"
+          </label>
+          <input type="file" id="following-file" accept=".html" class="hidden" />
+
+          <label for="followers-file" class="file-label bg-primary hover:bg-primary-hover px-6 py-3 rounded-lg cursor-pointer transition-colors duration-300">
+            Carica il file "followers_1"
+          </label>
+          <input type="file" id="followers-file" accept=".html" class="hidden" />
+        </div>
+
+        <!-- Results Section -->
+        <div id="output" class="flex flex-wrap justify-center gap-4"></div>
+
+        <!-- Instructions Section -->
+        <section id="utilizzo" class="bg-dark-card rounded-xl p-6 shadow-lg max-w-3xl mx-auto">
+          <h2 class="text-2xl font-bold text-accent mb-6">Utilizzo</h2>
+          
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-xl font-semibold text-success mb-4">Scaricare i Dati</h3>
+              <ol class="list-decimal list-inside space-y-2 text-gray-200">
+                <li>Vai nella home del tuo profilo Instagram</li>
+                <li>Apri le impostazioni (3 linee orizzontali in alto a destra)</li>
+                <li>Seleziona "La tua attività"</li>
+                <li>Scorri fino in fondo e clicca "Scarica le tue informazioni"</li>
+                <li>Clicca "Scarica o trasferisci informazioni"</li>
+                <li>Seleziona l'account desiderato</li>
+                <li>Clicca "Alcune delle tue informazioni"</li>
+                <li>Nella voce "Contatti" seleziona "Follower e persone/Pagine seguite"</li>
+                <li>Clicca "Scarica sul dispositivo"</li>
+                <li>Attendi la mail con il file .zip (potrebbe richiedere diverse ore)</li>
+              </ol>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-success mb-4">Analizzare i Dati</h3>
+              <ol class="list-decimal list-inside space-y-2 text-gray-200">
+                <li>Estrai il file .zip scaricato (ti servirà solo la cartella "connections")</li>
+                <li>Carica i file richiesti dalla cartella "connections" usando i pulsanti qui sopra</li>
+                <li>Visualizza la lista degli utenti che non ti seguono</li>
+                <li>Usa le checkbox per tenere traccia delle azioni intraprese</li>
+              </ol>
+            </div>
+          </div>
         </section>
 
-        <section id="privacy">
-          <h2>Privacy</h2>
-          <p>L'applicazione elabora i dati completamente nel tuo browser. Nessuna informazione viene inviata a server esterni o memorizzata online, garantendo la massima sicurezza e privacy dei tuoi dati.</p>
+        <!-- Privacy Section -->
+        <section id="privacy" class="bg-dark-card rounded-xl p-6 shadow-lg max-w-3xl mx-auto">
+          <h2 class="text-2xl font-bold text-accent mb-6">Privacy</h2>
+          <p class="text-gray-200 leading-relaxed">
+            L'applicazione elabora i dati completamente nel tuo browser. Nessuna informazione viene inviata a server esterni o memorizzata online, garantendo la massima sicurezza e privacy dei tuoi dati.
+          </p>
         </section>
+      </div>
     </div>
 
-    <!-- <script src="script.js"></script> -->
     <script src="https://cdn.polyfill.io/v3/polyfill.min.js"></script>
     <script src="script.js"></script>
   </body>

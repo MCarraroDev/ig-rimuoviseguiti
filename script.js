@@ -15,7 +15,6 @@ $(document).ready(function() {
     const file = event.target.files[0];
     const reader = new FileReader();
 
-    // Quando il file è caricato, eseguiamo l'elaborazione
     reader.onload = function (e) {
       const content = e.target.result;
       if (event.target.id === 'following-file') {
@@ -26,14 +25,12 @@ $(document).ready(function() {
         updateButtonStatus('followers-file');
       }
 
-      // Quando entrambi i file sono caricati, mostriamo i risultati
       if (followingData && followersData) {
-        hideFileButtons(); // Nascondiamo i pulsanti dopo il caricamento
+        hideFileButtons();
         displayNonFollowers();
       }
     };
 
-    // Se il browser supporta FileReader, leggiamo il file come testo
     reader.readAsText(file);
   }
 
@@ -47,43 +44,53 @@ $(document).ready(function() {
     return usernames;
   }
 
-  // Funzione per mostrare gli utenti che segui ma che non ti seguono indietro
   function displayNonFollowers() {
     const $output = $('#output');
-    $output.empty(); // Pulisce il contenuto precedente
+    $output.empty();
 
     const nonFollowers = followingData.filter(
       (user) => !followersData.includes(user)
     );
 
     nonFollowers.forEach((user) => {
-      const $card = $('<div>', { class: 'card' });
+      // Card container con animazione al hover
+      const $card = $('<div>', {
+        class: 'bg-dark-card hover:bg-dark-card/90 rounded-xl p-4 w-64 transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1'
+      });
       
+      // Username link con stile moderno
       const $usernameLink = $('<a>', {
         href: `https://www.instagram.com/${user}`,
         target: '_blank',
-        text: user
+        text: user,
+        class: 'text-white hover:text-accent font-medium text-lg block mb-3 transition-colors duration-300'
       });
 
-      const $cardInput = $('<div>', { class: 'checkbox-wrapper-11' });
+      // Checkbox container con layout migliorato
+      const $cardInput = $('<div>', {
+        class: 'flex items-center gap-3 p-2 rounded-lg hover:bg-black/20 transition-colors duration-300 cursor-pointer'
+      });
       
+      // Checkbox personalizzata
       const $checkbox = $('<input>', {
         type: 'checkbox',
         id: `checkbox-${user}`,
         name: 'r',
-        value: user
+        value: user,
+        class: 'w-5 h-5 rounded border-gray-400 text-success focus:ring-success transition-colors duration-300'
       });
 
+      // Label della checkbox
       const $labelForCheckbox = $('<label>', {
         for: `checkbox-${user}`,
-        html: 'Da fare'
+        html: 'Da fare',
+        class: 'text-gray-200 select-none'
       });
 
-      // Costruisci la struttura della card
       $cardInput.append($checkbox, $labelForCheckbox);
-      $card.append($usernameLink, '<br>', $cardInput);
+      $card.append($usernameLink, $cardInput);
 
-      // Event listener per attivare/disattivare la checkbox cliccando sul div
+      // Event listener per il click sulla card
       $cardInput.on('click', function(event) {
         if (!$(event.target).is('input, label')) {
           $checkbox.prop('checked', !$checkbox.prop('checked'));
@@ -91,7 +98,7 @@ $(document).ready(function() {
         }
       });
 
-      // Event listener per gestire il cambio di stato della checkbox
+      // Event listener per il cambio stato della checkbox
       $checkbox.on('change', function() {
         updateCardStyle($card, $(this));
       });
@@ -100,20 +107,28 @@ $(document).ready(function() {
     });
   }
 
-  // Funzione helper per aggiornare lo stile della card
   function updateCardStyle($card, $checkbox) {
-    $card.toggleClass('checked', $checkbox.prop('checked'));
+    if ($checkbox.prop('checked')) {
+      $card.addClass('bg-success hover:bg-success-hover')
+           .removeClass('bg-dark-card hover:bg-dark-card/90');
+    } else {
+      $card.removeClass('bg-success hover:bg-success-hover')
+           .addClass('bg-dark-card hover:bg-dark-card/90');
+    }
   }
 
-  // Aggiorna lo stato del pulsante dopo il caricamento del file
   function updateButtonStatus(fileId) {
     $(`label[for="${fileId}"]`)
       .text('Fatto!')
-      .addClass('done');
+      .removeClass('bg-primary hover:bg-primary-hover')
+      .addClass('bg-success hover:bg-success-hover');
   }
 
-  // Nascondi i pulsanti per il caricamento dei file
   function hideFileButtons() {
-    $('.file-buttons').addClass('hidden');
+    $('.file-buttons')
+      .addClass('opacity-0')
+      .one('transitionend', function() {
+        $(this).addClass('hidden');
+      });
   }
 });
