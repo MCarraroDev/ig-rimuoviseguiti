@@ -45,6 +45,7 @@ Questo strumento web ti permette di identificare facilmente quali utenti Instagr
 * [![CSS3][CSS3-shield]][CSS3-url]
 * [![JavaScript][JS-shield]][JS-url]
 * [![jQuery][jQuery-shield]][jQuery-url]
+* [![Tailwind][Tailwind-shield]][Tailwind-url]
 
 <!-- UTILIZZO -->
 ## Utilizzo
@@ -88,5 +89,7 @@ Distribuito sotto licenza MIT. Vedi `LICENSE` per maggiori informazioni.
 [JS-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [jQuery-shield]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [jQuery-url]: https://jquery.com
+[Tailwind-shield]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
+[Tailwind-url]: https://tailwindcss.com
 
 <p align="right">(<a href="#readme-top">torna all'inizio</a>)</p>
