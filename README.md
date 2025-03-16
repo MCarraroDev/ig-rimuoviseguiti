@@ -37,7 +37,7 @@
 <!-- INFORMAZIONI SUL PROGETTO -->
 ## Informazioni sul Progetto
 
-Questo strumento web ti permette di identificare facilmente quali utenti Instagram segui ma non ti seguono indietro. L'applicazione è completamente client-side e non richiede l'accesso al tuo account Instagram, garantendo la massima privacy dei tuoi dati.
+Questo strumento web ti permette di identificare facilmente quali utenti Instagram segui ma non ti ricambiano. L'applicazione è completamente client-side e non richiede l'accesso al tuo account Instagram, garantendo la massima privacy dei tuoi dati.
 
 ### Sviluppato Con
 
